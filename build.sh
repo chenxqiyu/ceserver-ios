@@ -9,7 +9,9 @@ export CXXCPP="$(xcrun --sdk iphoneos -f clang++) -E -D __arm__=1"
 export RANLIB=$(xcrun --sdk iphoneos --find ranlib) 
 export LIBTOOL=$(xcrun --sdk iphoneos --find libtool) 
 export STRIP=$(xcrun --sdk iphoneos --find strip) 
-export CFLAGS="-arch arm64 -isysroot $SDKROOT -miphoneos-version-min=$VER_MIN" 
+#  export CFLAGS="-arch arm64 -isysroot $SDKROOT -miphoneos-version-min=$VER_MIN" 
+# 增加 -Wno-vla-cxx-extension 屏蔽 VLA 警告
+export CFLAGS="-arch arm64 -isysroot $SDKROOT -miphoneos-version-min=$VER_MIN -Wno-vla-cxx-extension"
 export CXXFLAGS=$CFLAGS
 export LDFLAGS="-arch arm64 -isysroot $SDKROOT"
 
